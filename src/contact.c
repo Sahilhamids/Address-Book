@@ -168,12 +168,14 @@ void deleteContact(void)
     }
 }
 
-void displayContact(int index)
+void displayContact(int i)
 {   
-    printf("\tName    : %s\n",contacts[index].name);
-    printf("\tPhone   : %s\n",contacts[index].phone);
-    printf("\tEmail   : %s\n",contacts[index].email);
-    printf("\tAddress : %s\n\n",contacts[index].address);
+    printf("-------+---------------------------+------------+---------------------------+---------------------------------\n");
+    printf("| %-4s | %-25s | %-10s | %-25s | %-30s |\n", "No.","Name", "Phone", " Email", "Address");
+    printf("-------+---------------------------+------------+---------------------------+---------------------------------\n");
+    printf("| %-4d | %-25s | %-10s | %-25s | %-30s |\n",i+1,contacts[i].name,contacts[i].phone,contacts[i].email,contacts[i].address);
+    printf("-------+---------------------------+------------+---------------------------+---------------------------------\n");
+    
 }
 
 void displayContacts(void)
@@ -185,13 +187,13 @@ void displayContacts(void)
         return;
     }
     printf("\n============= CONTACTS LIST ==============\n\n");
+    printf("-------+---------------------------+------------+---------------------------+---------------------------------\n");
+    printf("| %-4s | %-25s | %-10s | %-25s | %-30s |\n", "No.","Name", "Phone", "Email", "Address");
+    printf("-------+---------------------------+------------+---------------------------+---------------------------------\n");
     for (int i=0; i< contactsCount; i++)
-    {   printf("Contact %d\n",i+1);
-        printf("\tName      : %s\n",contacts[i].name);
-        printf("\tPhone     : %s\n",contacts[i].phone);
-        printf("\tEmail     : %s\n",contacts[i].email);
-        printf("\tAddress   : %s\n",contacts[i].address);
-        printf("\n");
+    {   
+        printf("| %-4d | %-25s | %-10s | %-25s | %-30s |\n",i+1,contacts[i].name,contacts[i].phone,contacts[i].email,contacts[i].address);
+        printf("-------+---------------------------+------------+---------------------------+---------------------------------\n");
     }
     
 }
@@ -206,7 +208,7 @@ void searchContact(void)
     //linear search
     int found=0;
     int index;
-    printf("\nSearched contacts:\n") ; 
+    printf("\nSearched Contacts:\n") ; 
     int count=1;
     for (int i=0; i< contactsCount; i++)
     {
@@ -218,7 +220,7 @@ void searchContact(void)
             (strncasecmp(contacts[i].email , contact,n) == 0))
         {
             // display contact   
-            printf("\nContact %d\n",count);
+            printf("Contact %d\n",count);
             displayContact(i);
             found = 1;
             count++;
